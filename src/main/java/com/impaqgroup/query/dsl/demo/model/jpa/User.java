@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -13,7 +15,7 @@ import java.util.Set;
 @Data
 @Builder
 @Entity
-@Table(name = "user")
+@Table(name = "users")
 public class User {
 
     @Id
@@ -22,8 +24,5 @@ public class User {
 
     @Column
     private String name;
-
-    @OneToMany(mappedBy = "assignee")
-    private Set<Task> tasks;
 
 }

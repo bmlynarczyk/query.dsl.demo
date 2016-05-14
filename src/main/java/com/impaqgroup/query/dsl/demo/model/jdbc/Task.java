@@ -10,7 +10,7 @@ public class Task {
 
     private final Integer id;
     private final String name;
-    private final User assignee;
+    private final User user;
     private final Priority priority;
 
 }

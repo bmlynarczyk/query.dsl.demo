@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 
@@ -14,7 +16,7 @@ import javax.persistence.*;
 @Data
 @Builder
 @Entity
-@Table(name = "task")
+@Table(name = "tasks")
 public class Task {
 
     @Id
@@ -25,8 +27,8 @@ public class Task {
     private String name;
 
     @ManyToOne
-    @JoinColumn(name="user_id")
-    private User assignee;
+    @JoinColumn(name="user_id", nullable = false)
+    private User user;
 
     @Column
     @Enumerated(EnumType.STRING)
