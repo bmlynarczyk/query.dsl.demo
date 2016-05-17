@@ -2,11 +2,12 @@ package com.impaqgroup.query.dsl.demo.repository.jpa;
 
 import com.impaqgroup.query.dsl.demo.model.jpa.Task;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
-public interface JpaTaskRepository extends JpaRepository<Task, Integer> {
+public interface JpaTaskRepository extends JpaRepository<Task, Integer>, JpaSpecificationExecutor<Task> {
 
     @Query(value = "select t from Task t where t.user.name = ?")
     List<Task> selectTasksByUserName(String userName);

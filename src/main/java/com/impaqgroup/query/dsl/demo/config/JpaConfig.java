@@ -10,6 +10,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @Configuration
 @EnableJpaRepositories(basePackages = {
+		"com.impaqgroup.query.dsl.demo.repository.criteria",
 		"com.impaqgroup.query.dsl.demo.repository.jpa"
 })
 @EntityScan(basePackages = {
