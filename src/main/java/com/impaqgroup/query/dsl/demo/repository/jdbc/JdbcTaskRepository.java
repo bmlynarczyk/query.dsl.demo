@@ -14,9 +14,6 @@ import java.util.List;
 @Repository
 public class JdbcTaskRepository {
 
-    private static final String SQL_INSERT_TASK = "insert into tasks (name, user_id, priority) values (?, ?, ?)";
-    private static final String SQL_FIND_ALL = "select id, name, user_id, priority from tasks";
-
     private JdbcOperations operations;
 
     @Autowired
@@ -25,7 +22,7 @@ public class JdbcTaskRepository {
     }
 
     public void save(Task task) {
-        operations.update(SQL_INSERT_TASK,
+        operations.update("insert into tasks (name, user_id, priority) values (?, ?, ?)",
                 task.getName(),
                 task.getUser().getId(),
                 task.getPriority().name()
@@ -39,7 +36,7 @@ public class JdbcTaskRepository {
                 .user(User.builder().id(rs.getInt("user_id")).build())
                 .priority(Priority.valueOf(rs.getString("priority")))
                 .build();
-        return operations.query(SQL_FIND_ALL, rowMapper);
+        return operations.query("select id, name, user_id, priority from tasks", rowMapper);
     }
 
 }
