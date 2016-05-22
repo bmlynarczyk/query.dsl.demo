@@ -15,9 +15,11 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = JdbcConfig.class)
-public class SpringJdbcTests {
+public class Example01JdbcMapperTest {
 
 	@Autowired
 	private JdbcTaskRepository jdbcTaskRepository;
@@ -26,21 +28,21 @@ public class SpringJdbcTests {
 	private JdbcUserRepository jdbcUserRepository;
 
 	@Test
-	public void should_load_all_tasks() {
+	public void should_load_all_tasks_jdbc() {
 //		given
 		Task persistableTask = createTask("some task", Priority.LOW);
 //		when
 		jdbcTaskRepository.save(persistableTask);
 		List<Task> loadedTasks = jdbcTaskRepository.findAll();
 //		then
-		Assertions.assertThat(loadedTasks.size()).isEqualTo(1);
+		assertThat(loadedTasks.size()).isEqualTo(1);
 	}
 
 	private Task createTask(String task_name, Priority priority) {
 		return Task.builder()
 				.id(1)
 				.name(task_name)
-				.user(jdbcUserRepository.findByName("some name"))
+				.user(jdbcUserRepository.findByName("some user"))
 				.priority(priority)
 				.build();
 	}

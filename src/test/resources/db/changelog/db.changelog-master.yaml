@@ -27,7 +27,7 @@ databaseChangeLog:
               columns:
                 - column:
                     name: name
-                    value: some name
+                    value: some user
   - changeSet:
       id: 3
       author: bmly
