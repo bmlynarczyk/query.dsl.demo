@@ -22,10 +22,7 @@ public class Example12SpringDataRepositoryTest extends JpaExampleBase {
 
 	@Test
 	public void should_filter_tasks_by_user_name_spring_data() {
-//		given
-		createTask("some task", Priority.LOW);
-//		when then
-		assertThatThrownBy(() -> jpaTaskRepository.findByUserName(1)).isInstanceOf(InvalidDataAccessApiUsageException.class);
+		assertThatThrownBy(() -> jpaTaskRepository.findByUserName(1)).hasCauseInstanceOf(IllegalArgumentException.class);
 	}
 
 

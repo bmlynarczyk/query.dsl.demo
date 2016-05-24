@@ -6,6 +6,8 @@ import com.impaqgroup.query.dsl.demo.model.jpa.Task;
 import com.impaqgroup.query.dsl.demo.model.jpa.Task_;
 import org.springframework.data.jpa.domain.Specification;
 
+import static com.impaqgroup.query.dsl.demo.model.jpa.QTask.task;
+
 public class Example11StrongTyping {
 
 	public void could_be_compilation_error() {
@@ -18,12 +20,12 @@ public class Example11StrongTyping {
 	}
 
 	public void it_is_compilation_error() {
-//		QTask.task.priority.eq(1);
-//		QTask.task.priority.eq(Priority.LOW);
-//		QTask.task.name.eq(1);
-//		QTask.task.name.eq("one");
-//		QTask.task.id.eq("one");
-//		QTask.task.id.eq(1);
+//		task.priority.eq(1);
+//		task.priority.eq(Priority.LOW);
+//		task.name.eq(1);
+//		task.name.eq("one");
+//		task.id.eq("one");
+//		task.id.eq(1);
 	}
 
 
