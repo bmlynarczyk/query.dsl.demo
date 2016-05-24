@@ -30,6 +30,7 @@ public class Example01JdbcMapperTest {
 	@Test
 	public void should_load_all_tasks_jdbc() {
 //		given
+		jdbcTaskRepository.deleteAll();
 		Task persistableTask = createTask("some task", Priority.LOW);
 //		when
 		jdbcTaskRepository.save(persistableTask);

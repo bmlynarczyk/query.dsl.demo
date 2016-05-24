@@ -39,4 +39,8 @@ public class JdbcTaskRepository {
         return operations.query("select id, name, user_id, priority from tasks", rowMapper);
     }
 
+    public int deleteAll() {
+        return operations.update("delete from tasks");
+    }
+
 }
